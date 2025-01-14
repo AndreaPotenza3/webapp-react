@@ -25,12 +25,15 @@ export default function Home() {
     return (
         <>
             <section>
-                <div>
-                    {movies.map(movie => (
-                        <div key={movie.id}>
-                            <MovieCard movie={movie} />
-                        </div>
-                    ))}
+                <div className="container min-vh-100">
+                    <h2 className="py-3">Lista dei film</h2>
+                    <div className="row mb-5 g-3">
+                        {movies.map(movie => (
+                            <div key={movie.id} className="col-lg-4 col-md-6 col-sm-12">
+                                <MovieCard movie={movie} />
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
         </>
