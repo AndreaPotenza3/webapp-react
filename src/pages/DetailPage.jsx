@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { useParams } from "react-router"
+import Form from "../comonents/ReviewForm"
+import ReviewCard from "../comonents/ReviewCard"
 
 export default function Details() {
 
@@ -25,7 +27,7 @@ export default function Details() {
 
     return (
         <>
-            {movie ? <section className="vh-100">
+            {movie ? <section className="min-vh-100">
                 <div className="p-4 d-flex">
                     <img src={movie.image} alt="" className="w-25" />
                     <div className="d-flex flex-column px-4">
@@ -35,7 +37,18 @@ export default function Details() {
                         <p>{movie.abstract}</p>
                     </div>
                 </div>
-
+                <div className="d-flex flex-column gy-4">
+                    <h1 className="px-4">Recensioni</h1>
+                    {movie.reviews.map((review) => {
+                        return (
+                            <div key={review.id}>
+                                <ReviewCard review={review} />
+                            </div>
+                        )
+                    }
+                    )
+                    }</div>
+                <Form />
             </section > : ''
             }
         </>
