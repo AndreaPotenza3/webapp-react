@@ -1,7 +1,8 @@
+import { Link, } from "react-router";
+
 export default function Header() {
+
     return (
-        <div className="bg-primary py-4 px-3 text-white fs-1 fw-bold">
-            My Movies
-        </div>
+        <Link to='/' className="text-decoration-none bg-primary py-4 px-3 text-white fs-1 fw-bold d-block">My Movies</Link>
     )
 }

@@ -1,9 +1,12 @@
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 
 export default function Footer() {
+
+    const { pathname } = useLocation()
+
     return (
         <div className="py-4 px-2 bg-dark text-white text-center">
-            {!'/' ? <Link to="/">Torna alla Home</Link> : ''}
+            {pathname === '/' ? '' : <Link className="text-white" to="/">Torna alla Home</Link>}
         </div>
     )
 }

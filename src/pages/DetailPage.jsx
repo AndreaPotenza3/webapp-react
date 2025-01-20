@@ -37,8 +37,8 @@ export default function Details() {
                         <p>{movie.abstract}</p>
                     </div>
                 </div>
-                <div className="d-flex flex-column gy-4">
-                    <h1 className="px-4">Recensioni</h1>
+                <div className="d-flex flex-column">
+                    <h1 className="px-4 pb-2">Recensioni</h1>
                     {movie.reviews.map((review) => {
                         return (
                             <div key={review.id}>
@@ -48,10 +48,12 @@ export default function Details() {
                     }
                     )
                     }</div>
-                <Form />
+                <Form id={id} onSuccess={fetchMovie} />
             </section > : ''
             }
         </>
 
     )
 }
+{/* <FontAwesomeIcon icon="fa-solid fa-star" />
+<FontAwesomeIcon icon="fa-regular fa-star" /> */}
