@@ -1,22 +1,30 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import axios from "axios"
 import { useParams } from "react-router"
 import Form from "../comonents/ReviewForm"
 import ReviewCard from "../comonents/ReviewCard"
+import GlobalContext from "../contexts/GlobalContext"
 
 export default function Details() {
 
     const { id } = useParams()
 
     const [movie, setMovie] = useState(null)
+    const { setIsLoading } = useContext(GlobalContext)
 
     function fetchMovie() {
+
+        setIsLoading(true)
+
         axios.get(`http://localhost:3000/movies/${id}`)
             .then(res => {
                 setMovie(res.data)
                 console.log(res.data)
             }).catch((err) => {
                 console.error(err)
+            })
+            .finally(() => {
+                setIsLoading(false)
             })
     }
 
